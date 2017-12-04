@@ -1,0 +1,72 @@
+! background transparency
+urxvt*depth: 32
+urxvt*background: rgba:1000/1000/1000/F800
+
+! color
+URxvt*background: #101010
+URxvt*foreground: #D0D0D0
+
+! black
+URxvt*color0: #262626
+URxvt*color8: #555753
+
+! red
+URxvt*color1: #CF4134
+URxvt*color9: #CC0000
+
+! green
+URxvt*color2: #4E9A06
+URxvt*color10: #79E513
+
+! yellow
+URxvt*color3: #C4A000
+URxvt*color11: #EDF630
+
+! blue
+URxvt*color4: #3465A4
+URxvt*color12: #49BBFB
+
+! magenta
+URxvt*color5: #75507B
+URxvt*color13: #8542FF
+
+! cyan
+URxvt*color6: #06989A
+URxvt*color14: #34E2E2
+
+! white
+URxvt*color7: #C7C7C7
+URxvt*color15: #EEEEEC
+
+URxvt*font: xft:Source Code Pro for Powerline:size=10
+
+! URxvt*letterSpace: -1
+
+URxvt.perl-ext-common : default,matcher,tabbed,fullscreen
+URxvt.urlLauncher     : firefox
+URxvt.matcher.button  : 1
+
+! Fullscreen switch
+URxvt.keysym.F11: perl:fullscreen:switch
+
+! scrollbar style - rxvt (default), plain (most compact), next, or xterm
+URxvt.scrollstyle: plain
+URxvt*scrollBar_right: true 
+
+! tab color
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-bg: 0
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! scroll back buffer
+URxvt.saveLines: 65536
