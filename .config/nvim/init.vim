@@ -9,7 +9,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 
 " YCM
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 
 " color table
 Plug 'guns/xterm-color-table.vim'
@@ -35,6 +35,9 @@ Plug 'vim-scripts/taglist.vim'
 
 "cpp-enhanced-highlight
 Plug 'octol/vim-cpp-enhanced-highlight'
+
+" syntastic
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 
@@ -107,22 +110,22 @@ endfunction
 
 nnoremap <silent> <F4> :call FoldColumnToggle()<cr>
 
-"YCM
-let g:ycm_show_dianostics_ui = 1
-let g:ycm_error_symbol = 'E'
-let g:ycm_warning_symbol = 'W'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_goto_buffer_command = 'vertical-split'
-let g:ycm_server_python_interpreter = 'python'
+""YCM
+"let g:ycm_show_dianostics_ui = 1
+"let g:ycm_error_symbol = 'E'
+"let g:ycm_warning_symbol = 'W'
+"let g:ycm_confirm_extra_conf = 0
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_goto_buffer_command = 'vertical-split'
+"let g:ycm_server_python_interpreter = 'python'
 
-nnoremap <F1> :YcmCompleter GoToDeclaration<CR>
-nnoremap <F2> :YcmCompleter GoToInclude<CR>
-"turn off YCM
-nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
-"turn on YCM
-nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
+"nnoremap <F1> :YcmCompleter GoToDeclaration<CR>
+"nnoremap <F2> :YcmCompleter GoToInclude<CR>
+""turn off YCM
+"nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
+""turn on YCM
+"nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 
 "ctrlp
 let g:ctrlp_working_path_mode = 'c'
@@ -143,3 +146,23 @@ autocmd FileType cpp setlocal commentstring=\/\/%s
 "tags
 set tags=./tags;
 nnoremap <F12> :TlistToggle<CR>
+
+" python PEP-008
+au BufNewFile,BufRead *.py,*.pyw set tabstop=4
+au BufNewFile,BufRead *.py,*.pyw set softtabstop=4
+au BufNewFile,BufRead *.py,*.pyw set shiftwidth=4
+au BufNewFile,BufRead *.py,*.pyw set textwidth=139
+au BufNewFile,BufRead *.py,*.pyw set expandtab
+au BufNewFile         *.py,*.pyw set fileformat=unix
+au BufNewFile,BufRead *.py,*.pyw let b:comment_leader = '#'
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = '--ignore=E501'
