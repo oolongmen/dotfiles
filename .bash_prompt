@@ -71,8 +71,8 @@ On_IPurple='\033[0;105m'  # Purple
 On_ICyan='\033[0;106m'    # Cyan
 On_IWhite='\033[0;107m'   # White
 
-if [ -f ~/.config/oolong/git-prompt.sh ]; then 
-    source ~/.config/oolong/git-prompt.sh
+if [[ -f ~/.config/git/git-prompt.sh ]]; then
+ 	. ~/.config/git/git-prompt.sh
 
     export GIT_PS1_SHOWCOLORHINTS=1
     export GIT_PS1_SHOWDIRTYSTATE=1
@@ -86,7 +86,7 @@ esac
 
 if [ "$color_prompt" = yes ]; then
     PS1="${debian_chroot:+($debian_chroot)}"
-    PS1+="\[${Yellow}\]\u${Color_Off}"
+    PS1+="\[${Yellow}\]\u\[${Color_Off}\]"
     PS1+="@"
     PS1+="\[${ICyan}\]\h\[${Color_Off}\]"
     PS1+="[\[${BBlue}\]\w\[${Color_Off}\]]"

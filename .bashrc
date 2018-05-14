@@ -1,10 +1,14 @@
-
+# shell opt
 shopt -s cdspell
 shopt -s cmdhist
 shopt -s checkwinsize
+shopt -s histappend
 
-source ~/.exports
-source ~/.aliases
+# exports
+. ~/.exports
+
+# aliases
+. ~/.aliases
 
 # Bash completion.
 if ! shopt -oq posix; then
@@ -16,14 +20,13 @@ if ! shopt -oq posix; then
 fi
 
 # git
-if [ -f $HOME/.config/git ]; then
-    source $HOME/.config/git/git-completion.bash
-    source $HOME/.config/git/git-prompt.sh
+if [[ -f ~/.config/git/git-completion.bash ]]; then
+    . ~/.config/git/git-completion.bash
 fi
 
 # prompt
-if [ -f ~/.bash_prompt ]; then
-    source ~/.bash_prompt
+if [[ -f ~/.bash_prompt ]]; then
+    . ~/.bash_prompt
 fi
 
 # force write to history after every command
