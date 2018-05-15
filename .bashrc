@@ -25,8 +25,10 @@ if [[ -f ~/.config/git/git-completion.bash ]]; then
 fi
 
 # prompt
-if [[ -f ~/.bash_prompt ]]; then
-    . ~/.bash_prompt
+PROMPT_THEME=oolong.theme.bash
+if [[ -f ~/.config/bash/${PROMPT_THEME} ]]; then
+    . ~/.config/bash/${PROMPT_THEME}
+    prompt_command
 fi
 
 # force write to history after every command
