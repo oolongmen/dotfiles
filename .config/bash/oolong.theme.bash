@@ -40,5 +40,5 @@ parse_git_branch () {
 
 function prompt_command() {
     PS1="\[${BOLD}${MAGENTA}\]\u\[$WHITE\]@\[$ORANGE\]\h\[$WHITE\][\[$BLUE\]\w\[$WHITE\]]\$"
-    PS1+="([[ -n \$(git branch 2> /dev/null) ]] && echo \"(\[$PURPLE\]\$(parse_git_branch)\[$WHITE\])\")\$ \[$RESET\]"
+    PS1+="([[ -n \$(git branch 2> /dev/null) ]] && echo \"(\[$PURPLE\]\$(parse_git_branch)\[$WHITE\])\")\\$ \[$RESET\]"
 }
