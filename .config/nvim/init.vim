@@ -83,6 +83,9 @@ set noswapfile                  " do not write annoying intermediate swap files,
 set cursorline                  " underline the current line, for quick orientation
 set splitright
 
+" clear highlight on space
+nnoremap <silent> <Space> :nohl<CR>
+
 "set list
 set lcs=trail:·,tab:»·,eol:$
 "set listchars=eol:$,tab:t.,trail:~,extends:>,precedes:<
@@ -156,6 +159,14 @@ au BufNewFile,BufRead *.py,*.pyw set expandtab
 au BufNewFile         *.py,*.pyw set fileformat=unix
 au BufNewFile,BufRead *.py,*.pyw let b:comment_leader = '#'
 
+au BufNewFile,BufRead *.sh set tabstop=4
+au BufNewFile,BufRead *.sh set softtabstop=4
+au BufNewFile,BufRead *.sh set shiftwidth=4
+au BufNewFile,BufRead *.sh set textwidth=139
+au BufNewFile,BufRead *.sh set noexpandtab
+au BufNewFile         *.sh set fileformat=unix
+au BufNewFile,BufRead *.sh let b:comment_leader = '#'
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -166,3 +177,5 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E501'
+let g:syntastic_python_pylint_args = '--disable=C0111,W0212,C0103,R0903,C0301,C0302,C0330'
+let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: [{symbol} {msg_id}] {msg}"'
