@@ -3,3 +3,9 @@ export EDITOR="vim"
 export HISTCONTROL=ignoredups
 export HISTSIZE=10000
 export HISTFILESIZE=10000
+
+export GOROOT=$HOME/go1.10.2
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/go
+
+export PATH=$PATH:$HOME/Apps/bin

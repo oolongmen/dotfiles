@@ -39,7 +39,7 @@ URxvt.color7: #C7C7C7
 URxvt.color15: #EEEEEC
 
 ! URxvt*font: xft:Source Code Pro for Powerline:size=10
-URxvt.font: xft:Inconsolata\-g for Powerline:size=10
+URxvt.font: xft:Inconsolata\-g for Powerline:size=13
 
 ! URxvt*letterSpace: -1
 
@@ -73,4 +73,4 @@ URxvt.scrollTtyKeypress: true
 URxvt.saveLines: 65536
 
 ! icon
-URxvt.iconFile: /usr/share/icons/Humanity/apps/64/terminal.svg
+/* URxvt.iconFile: /usr/share/icons/Humanity/apps/64/terminal.svg */
