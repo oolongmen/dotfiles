@@ -9,8 +9,23 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+set $FOCUS #989898
+set $UNFOCUS #3c3b37
+
+# Layout colors 	    bord 	 bg 	  text     indicator (split)
+client.focused 			$FOCUS   $FOCUS   $FOCUS   $FOCUS
+client.focused_inactive $UNFOCUS $UNFOCUS $UNFOCUS $UNFOCUS
+client.unfocused 		$UNFOCUS $UNFOCUS $UNFOCUS $UNFOCUS
+client.urgent 			$FOCUS   $FOCUS   $FOCUS   $FOCUS
+client.background 		$UNFOCUS
+
+gaps inner 2
+gaps outer 6
+
 set $mod Mod4
-new_window 1pixel
+default_border pixel 2
+
+focus_follows_mouse no
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -31,29 +46,18 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec rxvt-unicode
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# pulse audio volume control
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-# bindsym $mod+F10 exec --no-startup-id pactl set-sink-volume 0 toggle
-
-# brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id sudo /home/oolong/Apps/bin/backlight.sh +10%
-bindsym XF86MonBrightnessDown exec --no-startup-id sudo /home/oolong/Apps/bin/backlight.sh -10%
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-assign [class="Firefox"] 2
-for_window [class="Firefox"] border 1pixel
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec rofi -show run
 
 # change focus
 bindsym $mod+j focus left
@@ -97,7 +101,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -105,36 +109,68 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+#
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
+
+# workspace $ws1 output eDP-1
+# workspace $ws2 output eDP-1
+# workspace $ws3 output eDP-1
+# workspace $ws4 output eDP-1
+# workspace $ws5 output eDP-1
+#
+# workspace $ws1
+# workspace $ws2
+# workspace $ws3
+# workspace $ws4
+# workspace $ws5
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+# bindsym $mod+2 workspace $ws2; exec --no-startup-id "pgrep -c firefox && i3-msg '[class=\\"Firefox\\"]' focus || firefox"
+# bindsym $mod+3 workspace $ws3; exec --no-startup-id "pgrep -c mc || urxvt -e mc"
+# bindsym $mod+4 workspace $ws4; exec --no-startup-id "pgrep -c spotify || spotify"
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec \
+"i3-nagbar -t warning \
+-m 'Do you really want to exit i3? This will end your X session.' \
+-b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -162,6 +198,42 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec_always --no-startup-id ~/.config/i3/scripts/polybar.sh &
-# exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox
+# power menu
+bindsym $mod+Shift+M exec \
+"i3-nagbar -t warning -m 'Power Menu' \
+-b 'Shutdown' 'systemctl poweroff -i' \
+-b 'Reboot' 'systemctl reboot' \
+-b 'Suspend' 'systemctl suspend' \
+-b 'Logout' 'i3-msg exit'" \
+
+# short-cuts
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
+# bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioMute exec --no-startup-id "pgrep -c pulseaudio && amixer -q -D pulse set Master 1+ toggle || amixer -q set Master toggle"
+
+# brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo $HOME/apps/bin/backlight.sh +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo $HOME/apps/bin/backlight.sh -5%
+
+# assign [class="Firefox"] $ws2
+# assign [class="URxvt" instance="mc"] $ws3
+# assign [class="vlc"] $ws4
+
+# Auto start 
+exec --no-startup-id compton -b
+exec --no-startup-id feh --bg-scale $HOME/.config/wallpaper/wallpaper.jpg
+exec --no-startup-id $HOME/.config/i3/scripts/polybar.sh &
+
+# start ibus
+exec --no-startup-id export XMODIFIERS=@im=ibus
+exec --no-startup-id export GTK_IM_MODULE=ibus
+exec --no-startup-id export QT_IM_MODULE=ibus
+exec --no-startup-id ibus-daemon --xim -d -r
+
+# screen saver
+# exec --no-startup-id xautolock -time 5 -locker lock.sh &
 #
+
+# setup multiple display
+exec --no-startup-id xrandr --output HDMI-2 --auto --primary --output eDP-1 --auto --left-of HDMI-2 --output DP-1 --auto --right-of HDMI-2

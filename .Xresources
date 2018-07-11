@@ -2,44 +2,80 @@
 urxvt.depth: 32
 urxvt.background: rgba:1000/1000/1000/F800
 
+! vim: set filetype=xdefaults :
+*foreground: #D7D0C7
+*background: #151515
+
+!black
+! *color0:     #AF875F
+! *color8:     #AF875F
+*color0:     #101010
+*color8:     #404040
+!red
+*color1:     #E84F4F
+*color9:     #D23D3D
+!green
+*color2:     #B8D68C
+*color10:    #A0CF5D
+!yellow
+*color3:     #E1AA5D
+*color11:    #F39D21
+!blue
+*color4:     #7DC1CF
+*color12:    #4E9FB1
+!magenta
+*color5:     #9B64FB
+*color13:    #8542FF
+!cyan
+*color6:     #6D878D
+*color14:    #42717B
+!white
+*color7:     #dddddd
+*color15:    #dddddd
+
+URxvt*borderColor:        #151515
+URxvt*colorBD:            #ffffff
+URxvt*cursorColor:        #ff8939
+URxvt*cursorColor2:       #151515
+
 ! color
-URxvt.background: #101010
-URxvt.foreground: #D0D0D0
+! URxvt.background: #101010
+! URxvt.foreground: #D0D0D0
 
 ! black
-URxvt.color0: #262626
-URxvt.color8: #555753
-
-! red
-URxvt.color1: #CF4134
-URxvt.color9: #CC0000
-
-! green
-URxvt.color2: #4E9A06
-URxvt.color10: #79E513
-
-! yellow
-URxvt.color3: #C4A000
-URxvt.color11: #EDF630
-
-! blue
-URxvt.color4: #3465A4
-URxvt.color12: #49BBFB
-
-! magenta
-URxvt.color5: #75507B
-URxvt.color13: #8542FF
-
-! cyan
-URxvt.color6: #06989A
-URxvt.color14: #34E2E2
-
-! white
-URxvt.color7: #C7C7C7
-URxvt.color15: #EEEEEC
+! URxvt.color0: #262626
+! URxvt.color8: #555753
+! 
+! ! red
+! URxvt.color1: #CF4134
+! URxvt.color9: #CC0000
+! 
+! ! green
+! URxvt.color2: #4E9A06
+! URxvt.color10: #79E513
+! 
+! ! yellow
+! URxvt.color3: #C4A000
+! URxvt.color11: #EDF630
+! 
+! ! blue
+! URxvt.color4: #3465A4
+! URxvt.color12: #49BBFB
+! 
+! ! magenta
+! URxvt.color5: #75507B
+! URxvt.color13: #8542FF
+! 
+! ! cyan
+! URxvt.color6: #06989A
+! URxvt.color14: #34E2E2
+! 
+! ! white
+! URxvt.color7: #C7C7C7
+! URxvt.color15: #EEEEEC
 
 ! URxvt*font: xft:Source Code Pro for Powerline:size=10
-URxvt.font: xft:Inconsolata\-g for Powerline:size=13
+URxvt.font: xft:Inconsolata\-g for Powerline:size=10
 
 ! URxvt*letterSpace: -1
 
@@ -74,3 +110,9 @@ URxvt.saveLines: 65536
 
 ! icon
 /* URxvt.iconFile: /usr/share/icons/Humanity/apps/64/terminal.svg */
+
+! cursor
+Xcursor.theme: capitaine-cursors 
+
+URxvt.inputMethod: ibus
+! URxvt.preeditType: OnTheSpot,None
